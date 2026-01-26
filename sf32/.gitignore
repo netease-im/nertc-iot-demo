@@ -1,0 +1,12 @@
+*.bak
+*.un~
+*.*~
+*.scvd
+*.old
+*.uvoptx
+*.o
+*.obj
+/**/build_*
+/**/*.pyc
+.sconsign.dblite
+.DS_Store

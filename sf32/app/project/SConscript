@@ -1,0 +1,35 @@
+import os
+from building import *
+
+cwd = GetCurrentDir()
+objs = []
+list = os.listdir(cwd)
+
+# Add SDK
+Import('SIFLI_SDK')
+objs.extend(SConscript(os.path.join(SIFLI_SDK, 'SConscript'), variant_dir="sifli_sdk", duplicate=0))
+
+# Add LCPU Patch
+objs.extend(SConscript(os.path.join(SIFLI_SDK, 'example/rom_bin/lcpu_general_ble_img/SConscript'), variant_dir="lcpu_patch", duplicate=0))
+
+# Add application source code
+objs.extend(SConscript(cwd+'/../src/SConscript', variant_dir="src", duplicate=0))
+
+# Add ezip resource
+objs.extend(SConscript(cwd+'/../asset/SConscript', variant_dir="asset", duplicate=0))
+
+
+# 构建 nertc_sdk 的路径
+nertc_sdk_path = os.path.join(cwd, '..', 'nertc_sdk')
+nertc_sdk_lib_path = os.path.join(nertc_sdk_path, 'libs')
+nertc_sdk_include_path = os.path.join(nertc_sdk_path, 'include')
+
+Import('env')
+# 添加库路径和库文件
+env.Append(LIBPATH=[nertc_sdk_lib_path])
+env.Append(LIBS=['nertc_sdk'])
+
+# 添加头文件路径
+env.Append(CPPPATH=[nertc_sdk_include_path])
+
+Return('objs')
