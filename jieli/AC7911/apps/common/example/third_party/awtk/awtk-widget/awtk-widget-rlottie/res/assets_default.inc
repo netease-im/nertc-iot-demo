@@ -1,0 +1,306 @@
+#include "awtk.h"
+#include "base/assets_manager.h"
+#if !defined(WITH_FS_RES) || defined(AWTK_WEB)
+#include "assets/default/inc/strings/en_US.data"
+#include "assets/default/inc/strings/zh_CN.data"
+#include "assets/default/inc/styles/default.data"
+#include "assets/default/inc/styles/keyboard.data"
+#include "assets/default/inc/styles/main.data"
+#include "assets/default/inc/ui/kb_ascii.data"
+#include "assets/default/inc/ui/kb_default.data"
+#include "assets/default/inc/ui/kb_float.data"
+#include "assets/default/inc/ui/kb_hex.data"
+#include "assets/default/inc/ui/kb_int.data"
+#include "assets/default/inc/ui/kb_phone.data"
+#include "assets/default/inc/ui/kb_ufloat.data"
+#include "assets/default/inc/ui/kb_uint.data"
+#include "assets/default/inc/ui/main.data"
+#include "assets/default/inc/data/1643_exploding_star_json.data"
+#include "assets/default/inc/data/1667_firework_json.data"
+#include "assets/default/inc/data/27746_joypixels_partying_face_emoji_animation_json.data"
+#include "assets/default/inc/data/29056_nepenthe_illustration_json.data"
+#include "assets/default/inc/data/360___degree_json.data"
+#include "assets/default/inc/data/3d_json.data"
+#include "assets/default/inc/data/4479_fireworks_json.data"
+#include "assets/default/inc/data/5317_fireworkds_json.data"
+#include "assets/default/inc/data/5344_honey_sack_hud_json.data"
+#include "assets/default/inc/data/abstract_circle_json.data"
+#include "assets/default/inc/data/acrobatics_json.data"
+#include "assets/default/inc/data/anubis_json.data"
+#include "assets/default/inc/data/ao_json.data"
+#include "assets/default/inc/data/a_cup_of_coffee_json.data"
+#include "assets/default/inc/data/a_mountain_json.data"
+#include "assets/default/inc/data/balloons_with_string_json.data"
+#include "assets/default/inc/data/bell_json.data"
+#include "assets/default/inc/data/birth_stone_logo_json.data"
+#include "assets/default/inc/data/bounching_ball_json.data"
+#include "assets/default/inc/data/browser_json.data"
+#include "assets/default/inc/data/confetti_json.data"
+#include "assets/default/inc/data/cooking_json.data"
+#include "assets/default/inc/data/dna_json.data"
+#include "assets/default/inc/data/done_json.data"
+#include "assets/default/inc/data/dynamic_path_test_json.data"
+#include "assets/default/inc/data/dynamic_property_json.data"
+#include "assets/default/inc/data/eid_mubarak_json.data"
+#include "assets/default/inc/data/emoji_shock_json.data"
+#include "assets/default/inc/data/emoji_wink_json.data"
+#include "assets/default/inc/data/file_transfer_json.data"
+#include "assets/default/inc/data/fingerprint_success_json.data"
+#include "assets/default/inc/data/funky_chicken_json.data"
+#include "assets/default/inc/data/gears_json.data"
+#include "assets/default/inc/data/gears_or_settings_json.data"
+#include "assets/default/inc/data/glow_loading_json.data"
+#include "assets/default/inc/data/gradient_animated_background_json.data"
+#include "assets/default/inc/data/gradient_sleepy_loader_json.data"
+#include "assets/default/inc/data/happy_json.data"
+#include "assets/default/inc/data/heart_json.data"
+#include "assets/default/inc/data/hourglass_json.data"
+#include "assets/default/inc/data/image_embedded_json.data"
+#include "assets/default/inc/data/image_test_json.data"
+#include "assets/default/inc/data/imprint_json.data"
+#include "assets/default/inc/data/Indicators1_json.data"
+#include "assets/default/inc/data/insta_camera_json.data"
+#include "assets/default/inc/data/intelia_logo_animation_json.data"
+#include "assets/default/inc/data/it_s_lunch_time__json.data"
+#include "assets/default/inc/data/jolly_walker_json.data"
+#include "assets/default/inc/data/leap_frog_loader_json.data"
+#include "assets/default/inc/data/like_json.data"
+#include "assets/default/inc/data/loader_4_json.data"
+#include "assets/default/inc/data/loader_animation_json.data"
+#include "assets/default/inc/data/loader_json.data"
+#include "assets/default/inc/data/loading_animation_json.data"
+#include "assets/default/inc/data/loading_json.data"
+#include "assets/default/inc/data/loading_rectangles_json.data"
+#include "assets/default/inc/data/loading__json.data"
+#include "assets/default/inc/data/looping_landscape___plane___clouds_json.data"
+#include "assets/default/inc/data/maps_json.data"
+#include "assets/default/inc/data/marker_json.data"
+#include "assets/default/inc/data/mask_json.data"
+#include "assets/default/inc/data/material_wave_loading_json.data"
+#include "assets/default/inc/data/matte_two_item_with_lowerlayer_json.data"
+#include "assets/default/inc/data/mnemonics_json.data"
+#include "assets/default/inc/data/ModernPictogramsForLottie_LoudMute_json.data"
+#include "assets/default/inc/data/movie_loading_json.data"
+#include "assets/default/inc/data/mughead_json.data"
+#include "assets/default/inc/data/night_own_json.data"
+#include "assets/default/inc/data/ondas_json.data"
+#include "assets/default/inc/data/party_penguin_json.data"
+#include "assets/default/inc/data/peli_canon_json.data"
+#include "assets/default/inc/data/personal_character_json.data"
+#include "assets/default/inc/data/polystar_anim_json.data"
+#include "assets/default/inc/data/polystar_line_clockwise_trim_json.data"
+#include "assets/default/inc/data/pumped_up_json.data"
+#include "assets/default/inc/data/red_box_json.data"
+#include "assets/default/inc/data/ripple_loading_animation_json.data"
+#include "assets/default/inc/data/settings_json.data"
+#include "assets/default/inc/data/spin__lil_loader_v2_json.data"
+#include "assets/default/inc/data/square_wheel_json.data"
+#include "assets/default/inc/data/starts_transparent_json.data"
+#include "assets/default/inc/data/static_dynamic_dash_json.data"
+#include "assets/default/inc/data/StickAndBall_json.data"
+#include "assets/default/inc/data/telegram_json.data"
+#include "assets/default/inc/data/tile_grid_loading_animation_json.data"
+#include "assets/default/inc/data/tractor_json.data"
+#include "assets/default/inc/data/triib_manage_json.data"
+#include "assets/default/inc/data/waves__json.data"
+#include "assets/default/inc/data/windmill_json.data"
+#include "assets/default/inc/data/world_locations_json.data"
+#include "assets/default/inc/data/worm_json.data"
+#include "assets/default/inc/data/you_re_in__json.data"
+#include "assets/default/inc/data/_alarm_json.data"
+#ifndef AWTK_WEB
+#ifdef WITH_STB_IMAGE
+#include "assets/default/inc/images/arrow_down_d.res"
+#include "assets/default/inc/images/arrow_down_f.res"
+#include "assets/default/inc/images/arrow_down_n.res"
+#include "assets/default/inc/images/arrow_down_o.res"
+#include "assets/default/inc/images/arrow_down_p.res"
+#include "assets/default/inc/images/arrow_left_d.res"
+#include "assets/default/inc/images/arrow_left_f.res"
+#include "assets/default/inc/images/arrow_left_n.res"
+#include "assets/default/inc/images/arrow_left_o.res"
+#include "assets/default/inc/images/arrow_left_p.res"
+#include "assets/default/inc/images/arrow_right_d.res"
+#include "assets/default/inc/images/arrow_right_f.res"
+#include "assets/default/inc/images/arrow_right_n.res"
+#include "assets/default/inc/images/arrow_right_o.res"
+#include "assets/default/inc/images/arrow_right_p.res"
+#include "assets/default/inc/images/arrow_up_d.res"
+#include "assets/default/inc/images/arrow_up_f.res"
+#include "assets/default/inc/images/arrow_up_n.res"
+#include "assets/default/inc/images/arrow_up_o.res"
+#include "assets/default/inc/images/arrow_up_p.res"
+#include "assets/default/inc/images/check_checked.res"
+#include "assets/default/inc/images/check_checked_d.res"
+#include "assets/default/inc/images/check_unchecked.res"
+#include "assets/default/inc/images/check_unchecked_d.res"
+#include "assets/default/inc/images/radio_checked.res"
+#include "assets/default/inc/images/radio_checked_d.res"
+#include "assets/default/inc/images/radio_unchecked.res"
+#include "assets/default/inc/images/radio_unchecked_d.res"
+#else /*WITH_STB_IMAGE*/
+#endif /*WITH_STB_IMAGE*/
+#ifdef WITH_TRUETYPE_FONT
+#include "assets/default/inc/fonts/default.res"
+#else /*WITH_TRUETYPE_FONT*/
+#endif /*WITH_TRUETYPE_FONT*/
+#endif /*AWTK_WEB*/
+#ifdef WITH_VGCANVAS
+#endif /*WITH_VGCANVAS*/
+#endif /*!defined(WITH_FS_RES) || defined(AWTK_WEB)*/
+
+ret_t assets_init(void) {
+  assets_manager_t* am = assets_manager();
+  assets_manager_set_theme(am, "default");
+
+#if defined(WITH_FS_RES) && !defined(AWTK_WEB)
+  assets_manager_preload(am, ASSET_TYPE_STYLE, "default");
+#else /*defined(WITH_FS_RES) && !defined(AWTK_WEB)*/
+  assets_manager_add(am, strings_en_US);
+  assets_manager_add(am, strings_zh_CN);
+  assets_manager_add(am, style_default);
+  assets_manager_add(am, style_keyboard);
+  assets_manager_add(am, style_main);
+  assets_manager_add(am, ui_kb_ascii);
+  assets_manager_add(am, ui_kb_default);
+  assets_manager_add(am, ui_kb_float);
+  assets_manager_add(am, ui_kb_hex);
+  assets_manager_add(am, ui_kb_int);
+  assets_manager_add(am, ui_kb_phone);
+  assets_manager_add(am, ui_kb_ufloat);
+  assets_manager_add(am, ui_kb_uint);
+  assets_manager_add(am, ui_main);
+  assets_manager_add(am, data_1643_exploding_star_json);
+  assets_manager_add(am, data_1667_firework_json);
+  assets_manager_add(am, data_27746_joypixels_partying_face_emoji_animation_json);
+  assets_manager_add(am, data_29056_nepenthe_illustration_json);
+  assets_manager_add(am, data_360___degree_json);
+  assets_manager_add(am, data_3d_json);
+  assets_manager_add(am, data_4479_fireworks_json);
+  assets_manager_add(am, data_5317_fireworkds_json);
+  assets_manager_add(am, data_5344_honey_sack_hud_json);
+  assets_manager_add(am, data_abstract_circle_json);
+  assets_manager_add(am, data_acrobatics_json);
+  assets_manager_add(am, data_anubis_json);
+  assets_manager_add(am, data_ao_json);
+  assets_manager_add(am, data_a_cup_of_coffee_json);
+  assets_manager_add(am, data_a_mountain_json);
+  assets_manager_add(am, data_balloons_with_string_json);
+  assets_manager_add(am, data_bell_json);
+  assets_manager_add(am, data_birth_stone_logo_json);
+  assets_manager_add(am, data_bounching_ball_json);
+  assets_manager_add(am, data_browser_json);
+  assets_manager_add(am, data_confetti_json);
+  assets_manager_add(am, data_cooking_json);
+  assets_manager_add(am, data_dna_json);
+  assets_manager_add(am, data_done_json);
+  assets_manager_add(am, data_dynamic_path_test_json);
+  assets_manager_add(am, data_dynamic_property_json);
+  assets_manager_add(am, data_eid_mubarak_json);
+  assets_manager_add(am, data_emoji_shock_json);
+  assets_manager_add(am, data_emoji_wink_json);
+  assets_manager_add(am, data_file_transfer_json);
+  assets_manager_add(am, data_fingerprint_success_json);
+  assets_manager_add(am, data_funky_chicken_json);
+  assets_manager_add(am, data_gears_json);
+  assets_manager_add(am, data_gears_or_settings_json);
+  assets_manager_add(am, data_glow_loading_json);
+  assets_manager_add(am, data_gradient_animated_background_json);
+  assets_manager_add(am, data_gradient_sleepy_loader_json);
+  assets_manager_add(am, data_happy_json);
+  assets_manager_add(am, data_heart_json);
+  assets_manager_add(am, data_hourglass_json);
+  assets_manager_add(am, data_image_embedded_json);
+  assets_manager_add(am, data_image_test_json);
+  assets_manager_add(am, data_imprint_json);
+  assets_manager_add(am, data_Indicators1_json);
+  assets_manager_add(am, data_insta_camera_json);
+  assets_manager_add(am, data_intelia_logo_animation_json);
+  assets_manager_add(am, data_it_s_lunch_time__json);
+  assets_manager_add(am, data_jolly_walker_json);
+  assets_manager_add(am, data_leap_frog_loader_json);
+  assets_manager_add(am, data_like_json);
+  assets_manager_add(am, data_loader_4_json);
+  assets_manager_add(am, data_loader_animation_json);
+  assets_manager_add(am, data_loader_json);
+  assets_manager_add(am, data_loading_animation_json);
+  assets_manager_add(am, data_loading_json);
+  assets_manager_add(am, data_loading_rectangles_json);
+  assets_manager_add(am, data_loading__json);
+  assets_manager_add(am, data_looping_landscape___plane___clouds_json);
+  assets_manager_add(am, data_maps_json);
+  assets_manager_add(am, data_marker_json);
+  assets_manager_add(am, data_mask_json);
+  assets_manager_add(am, data_material_wave_loading_json);
+  assets_manager_add(am, data_matte_two_item_with_lowerlayer_json);
+  assets_manager_add(am, data_mnemonics_json);
+  assets_manager_add(am, data_ModernPictogramsForLottie_LoudMute_json);
+  assets_manager_add(am, data_movie_loading_json);
+  assets_manager_add(am, data_mughead_json);
+  assets_manager_add(am, data_night_own_json);
+  assets_manager_add(am, data_ondas_json);
+  assets_manager_add(am, data_party_penguin_json);
+  assets_manager_add(am, data_peli_canon_json);
+  assets_manager_add(am, data_personal_character_json);
+  assets_manager_add(am, data_polystar_anim_json);
+  assets_manager_add(am, data_polystar_line_clockwise_trim_json);
+  assets_manager_add(am, data_pumped_up_json);
+  assets_manager_add(am, data_red_box_json);
+  assets_manager_add(am, data_ripple_loading_animation_json);
+  assets_manager_add(am, data_settings_json);
+  assets_manager_add(am, data_spin__lil_loader_v2_json);
+  assets_manager_add(am, data_square_wheel_json);
+  assets_manager_add(am, data_starts_transparent_json);
+  assets_manager_add(am, data_static_dynamic_dash_json);
+  assets_manager_add(am, data_StickAndBall_json);
+  assets_manager_add(am, data_telegram_json);
+  assets_manager_add(am, data_tile_grid_loading_animation_json);
+  assets_manager_add(am, data_tractor_json);
+  assets_manager_add(am, data_triib_manage_json);
+  assets_manager_add(am, data_waves__json);
+  assets_manager_add(am, data_windmill_json);
+  assets_manager_add(am, data_world_locations_json);
+  assets_manager_add(am, data_worm_json);
+  assets_manager_add(am, data_you_re_in__json);
+  assets_manager_add(am, data__alarm_json);
+#ifndef AWTK_WEB
+  assets_manager_add(am, image_arrow_down_d);
+  assets_manager_add(am, image_arrow_down_f);
+  assets_manager_add(am, image_arrow_down_n);
+  assets_manager_add(am, image_arrow_down_o);
+  assets_manager_add(am, image_arrow_down_p);
+  assets_manager_add(am, image_arrow_left_d);
+  assets_manager_add(am, image_arrow_left_f);
+  assets_manager_add(am, image_arrow_left_n);
+  assets_manager_add(am, image_arrow_left_o);
+  assets_manager_add(am, image_arrow_left_p);
+  assets_manager_add(am, image_arrow_right_d);
+  assets_manager_add(am, image_arrow_right_f);
+  assets_manager_add(am, image_arrow_right_n);
+  assets_manager_add(am, image_arrow_right_o);
+  assets_manager_add(am, image_arrow_right_p);
+  assets_manager_add(am, image_arrow_up_d);
+  assets_manager_add(am, image_arrow_up_f);
+  assets_manager_add(am, image_arrow_up_n);
+  assets_manager_add(am, image_arrow_up_o);
+  assets_manager_add(am, image_arrow_up_p);
+  assets_manager_add(am, image_check_checked);
+  assets_manager_add(am, image_check_checked_d);
+  assets_manager_add(am, image_check_unchecked);
+  assets_manager_add(am, image_check_unchecked_d);
+  assets_manager_add(am, image_radio_checked);
+  assets_manager_add(am, image_radio_checked_d);
+  assets_manager_add(am, image_radio_unchecked);
+  assets_manager_add(am, image_radio_unchecked_d);
+#ifdef WITH_TRUETYPE_FONT
+  assets_manager_add(am, font_default);
+#else /*WITH_TRUETYPE_FONT*/
+#endif /*WITH_TRUETYPE_FONT*/
+#endif /*AWTK_WEB*/
+#ifdef WITH_VGCANVAS
+#endif /*WITH_VGCANVAS*/
+#endif /*defined(WITH_FS_RES) && !defined(AWTK_WEB)*/
+
+  tk_init_assets();
+  return RET_OK;
+}

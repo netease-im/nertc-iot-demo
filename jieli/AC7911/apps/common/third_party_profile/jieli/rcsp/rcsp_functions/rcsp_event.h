@@ -1,0 +1,33 @@
+#ifndef __RCSP_EVENT_H__
+#define __RCSP_EVENT_H__
+
+#include "typedef.h"
+#include "app_config.h"
+#include "rcsp_user_msg.h"
+
+
+enum {
+    USER_MSG_RCSP_DISCONNECT_EDR = USER_MSG_SYS_RCSP_BEGIN,
+    USER_MSG_RCSP_BT_SCAN_OPEN,
+    USER_MSG_RCSP_BT_SCAN_STOP,
+    USER_MSG_RCSP_BT_CONNECT_SPEC_ADDR,
+    USER_MSG_RCSP_SET_VOL,
+    USER_MSG_RCSP_SET_EQ_PARAM,
+    USER_MSG_RCSP_SET_FMTX_FREQ,
+    USER_MSG_RCSP_SET_BT_EMITTER_SW,
+    USER_MSG_RCSP_SET_BT_EMITTER_CONNECT_STATES,
+    USER_MSG_RCSP_BS_END,
+    USER_MSG_RCSP_MODE_SWITCH,
+    USER_MSG_RCSP_FM_UPDATE_STATE,
+    USER_MSG_RCSP_RTC_UPDATE_STATE,
+    USER_MSG_RCSP_FILE_TRANS_BACK,
+    USER_MSG_RCSP_NFC_FILE_TRANS_BACK,
+    USER_MSG_RCSP_SPORT_DATA_EVENT,
+    USER_MSG_RCSP_CONNECT_RESET,
+};
+
+//void rcsp_common_event_deal(int msg, int argc, int *argv);
+bool rcsp_msg_post(int msg, int argc, ...);
+
+#endif//__RCSP_EVENT_H__
+

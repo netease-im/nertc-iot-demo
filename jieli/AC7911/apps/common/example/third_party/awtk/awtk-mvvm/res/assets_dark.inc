@@ -1,0 +1,216 @@
+#include "awtk.h"
+#include "base/assets_manager.h"
+#if !defined(WITH_FS_RES) || defined(AWTK_WEB)
+#include "assets/default/inc/strings/en_US.data"
+#include "assets/default/inc/strings/zh_CN.data"
+#include "assets/dark/inc/styles/system_bar.data"
+#include "assets/dark/inc/styles/temperature40.data"
+#include "assets/default/inc/styles/default.data"
+#include "assets/default/inc/styles/dialog.data"
+#include "assets/default/inc/styles/dialog_confirm.data"
+#include "assets/default/inc/styles/dialog_info.data"
+#include "assets/default/inc/styles/dialog_toast.data"
+#include "assets/default/inc/styles/dialog_warn.data"
+#include "assets/default/inc/styles/file_browser.data"
+#include "assets/default/inc/styles/keyboard.data"
+#include "assets/default/inc/styles/main.data"
+#include "assets/default/inc/styles/window1.data"
+#include "assets/default/inc/ui/address.data"
+#include "assets/default/inc/ui/app_conf.data"
+#include "assets/default/inc/ui/app_conf_array.data"
+#include "assets/default/inc/ui/app_conf_extend_cmds.data"
+#include "assets/default/inc/ui/app_conf_main.data"
+#include "assets/default/inc/ui/app_conf_reload.data"
+#include "assets/default/inc/ui/app_conf_sub_vm.data"
+#include "assets/default/inc/ui/books13.data"
+#include "assets/default/inc/ui/books39.data"
+#include "assets/default/inc/ui/calculator.data"
+#include "assets/default/inc/ui/compositor.data"
+#include "assets/default/inc/ui/com_settings.data"
+#include "assets/default/inc/ui/count_down.data"
+#include "assets/default/inc/ui/custom_handlers.data"
+#include "assets/default/inc/ui/demo33.data"
+#include "assets/default/inc/ui/demo33_a.data"
+#include "assets/default/inc/ui/demo33_b.data"
+#include "assets/default/inc/ui/demo35.data"
+#include "assets/default/inc/ui/demo9_main.data"
+#include "assets/default/inc/ui/file_chooser_for_open.data"
+#include "assets/default/inc/ui/file_chooser_for_save.data"
+#include "assets/default/inc/ui/folder_chooser.data"
+#include "assets/default/inc/ui/home.data"
+#include "assets/default/inc/ui/humidity.data"
+#include "assets/default/inc/ui/image_animation.data"
+#include "assets/default/inc/ui/iotjs_fs.data"
+#include "assets/default/inc/ui/js_temperature40.data"
+#include "assets/default/inc/ui/kb_ascii.data"
+#include "assets/default/inc/ui/kb_default.data"
+#include "assets/default/inc/ui/kb_float.data"
+#include "assets/default/inc/ui/kb_hex.data"
+#include "assets/default/inc/ui/kb_int.data"
+#include "assets/default/inc/ui/kb_phone.data"
+#include "assets/default/inc/ui/kb_ufloat.data"
+#include "assets/default/inc/ui/kb_uint.data"
+#include "assets/default/inc/ui/network_add.data"
+#include "assets/default/inc/ui/network_edit.data"
+#include "assets/default/inc/ui/room_settings.data"
+#include "assets/default/inc/ui/screensaver.data"
+#include "assets/default/inc/ui/send_key_set_prop.data"
+#include "assets/default/inc/ui/shape.data"
+#include "assets/default/inc/ui/system_bar.data"
+#include "assets/default/inc/ui/temperature1.data"
+#include "assets/default/inc/ui/temperature10.data"
+#include "assets/default/inc/ui/temperature14.data"
+#include "assets/default/inc/ui/temperature16.data"
+#include "assets/default/inc/ui/temperature17.data"
+#include "assets/default/inc/ui/temperature18.data"
+#include "assets/default/inc/ui/temperature19.data"
+#include "assets/default/inc/ui/temperature2.data"
+#include "assets/default/inc/ui/temperature28.data"
+#include "assets/default/inc/ui/temperature28_home.data"
+#include "assets/default/inc/ui/temperature3.data"
+#include "assets/default/inc/ui/temperature4.data"
+#include "assets/default/inc/ui/temperature40.data"
+#include "assets/default/inc/ui/temperature5.data"
+#include "assets/default/inc/ui/temperature6.data"
+#include "assets/default/inc/ui/temperature9.data"
+#include "assets/default/inc/ui/temperature_humidity.data"
+#include "assets/default/inc/ui/temperature_humidity2.data"
+#include "assets/default/inc/ui/temperature_humidity3.data"
+#include "assets/default/inc/data/a_b_c_any.data"
+#include "assets/default/inc/data/com_zlg_app_json.data"
+#include "assets/default/inc/data/demo23_json.data"
+#include "assets/default/inc/data/demo25_json.data"
+#include "assets/default/inc/data/demo29_json.data"
+#include "assets/default/inc/data/file_info_txt.data"
+#include "assets/default/inc/data/gpinyin_dat.data"
+#include "assets/default/inc/data/suggest_words_zh_cn_dat.data"
+#include "assets/default/inc/data/test_dat.data"
+#include "assets/default/inc/data/test_json.data"
+#ifndef AWTK_WEB
+#ifdef WITH_STB_IMAGE
+#else /*WITH_STB_IMAGE*/
+#endif /*WITH_STB_IMAGE*/
+#ifdef WITH_TRUETYPE_FONT
+#else /*WITH_TRUETYPE_FONT*/
+#endif /*WITH_TRUETYPE_FONT*/
+#endif /*AWTK_WEB*/
+#ifdef WITH_VGCANVAS
+#include "assets/default/inc/images/ball.bsvg"
+#include "assets/default/inc/images/china.bsvg"
+#include "assets/default/inc/images/girl.bsvg"
+#include "assets/default/inc/images/pointer.bsvg"
+#include "assets/default/inc/images/pointer_1.bsvg"
+#include "assets/default/inc/images/pointer_4.bsvg"
+#endif /*WITH_VGCANVAS*/
+#endif /*!defined(WITH_FS_RES) || defined(AWTK_WEB)*/
+
+ret_t assets_init(void) {
+  assets_manager_t* am = assets_manager();
+  assets_manager_set_theme(am, "dark");
+
+#if defined(WITH_FS_RES) && !defined(AWTK_WEB)
+  assets_manager_preload(am, ASSET_TYPE_STYLE, "default");
+#else /*defined(WITH_FS_RES) && !defined(AWTK_WEB)*/
+  assets_manager_add(am, strings_en_US_default);
+  assets_manager_add(am, strings_zh_CN_default);
+  assets_manager_add(am, style_system_bar_dark);
+  assets_manager_add(am, style_temperature40_dark);
+  assets_manager_add(am, style_default_default);
+  assets_manager_add(am, style_dialog_default);
+  assets_manager_add(am, style_dialog_confirm_default);
+  assets_manager_add(am, style_dialog_info_default);
+  assets_manager_add(am, style_dialog_toast_default);
+  assets_manager_add(am, style_dialog_warn_default);
+  assets_manager_add(am, style_file_browser_default);
+  assets_manager_add(am, style_keyboard_default);
+  assets_manager_add(am, style_main_default);
+  assets_manager_add(am, style_window1_default);
+  assets_manager_add(am, ui_address_default);
+  assets_manager_add(am, ui_app_conf_default);
+  assets_manager_add(am, ui_app_conf_array_default);
+  assets_manager_add(am, ui_app_conf_extend_cmds_default);
+  assets_manager_add(am, ui_app_conf_main_default);
+  assets_manager_add(am, ui_app_conf_reload_default);
+  assets_manager_add(am, ui_app_conf_sub_vm_default);
+  assets_manager_add(am, ui_books13_default);
+  assets_manager_add(am, ui_books39_default);
+  assets_manager_add(am, ui_calculator_default);
+  assets_manager_add(am, ui_compositor_default);
+  assets_manager_add(am, ui_com_settings_default);
+  assets_manager_add(am, ui_count_down_default);
+  assets_manager_add(am, ui_custom_handlers_default);
+  assets_manager_add(am, ui_demo33_default);
+  assets_manager_add(am, ui_demo33_a_default);
+  assets_manager_add(am, ui_demo33_b_default);
+  assets_manager_add(am, ui_demo35_default);
+  assets_manager_add(am, ui_demo9_main_default);
+  assets_manager_add(am, ui_file_chooser_for_open_default);
+  assets_manager_add(am, ui_file_chooser_for_save_default);
+  assets_manager_add(am, ui_folder_chooser_default);
+  assets_manager_add(am, ui_home_default);
+  assets_manager_add(am, ui_humidity_default);
+  assets_manager_add(am, ui_image_animation_default);
+  assets_manager_add(am, ui_iotjs_fs_default);
+  assets_manager_add(am, ui_js_temperature40_default);
+  assets_manager_add(am, ui_kb_ascii_default);
+  assets_manager_add(am, ui_kb_default_default);
+  assets_manager_add(am, ui_kb_float_default);
+  assets_manager_add(am, ui_kb_hex_default);
+  assets_manager_add(am, ui_kb_int_default);
+  assets_manager_add(am, ui_kb_phone_default);
+  assets_manager_add(am, ui_kb_ufloat_default);
+  assets_manager_add(am, ui_kb_uint_default);
+  assets_manager_add(am, ui_network_add_default);
+  assets_manager_add(am, ui_network_edit_default);
+  assets_manager_add(am, ui_room_settings_default);
+  assets_manager_add(am, ui_screensaver_default);
+  assets_manager_add(am, ui_send_key_set_prop_default);
+  assets_manager_add(am, ui_shape_default);
+  assets_manager_add(am, ui_system_bar_default);
+  assets_manager_add(am, ui_temperature1_default);
+  assets_manager_add(am, ui_temperature10_default);
+  assets_manager_add(am, ui_temperature14_default);
+  assets_manager_add(am, ui_temperature16_default);
+  assets_manager_add(am, ui_temperature17_default);
+  assets_manager_add(am, ui_temperature18_default);
+  assets_manager_add(am, ui_temperature19_default);
+  assets_manager_add(am, ui_temperature2_default);
+  assets_manager_add(am, ui_temperature28_default);
+  assets_manager_add(am, ui_temperature28_home_default);
+  assets_manager_add(am, ui_temperature3_default);
+  assets_manager_add(am, ui_temperature4_default);
+  assets_manager_add(am, ui_temperature40_default);
+  assets_manager_add(am, ui_temperature5_default);
+  assets_manager_add(am, ui_temperature6_default);
+  assets_manager_add(am, ui_temperature9_default);
+  assets_manager_add(am, ui_temperature_humidity_default);
+  assets_manager_add(am, ui_temperature_humidity2_default);
+  assets_manager_add(am, ui_temperature_humidity3_default);
+  assets_manager_add(am, data_a_b_c_any_default);
+  assets_manager_add(am, data_com_zlg_app_json_default);
+  assets_manager_add(am, data_demo23_json_default);
+  assets_manager_add(am, data_demo25_json_default);
+  assets_manager_add(am, data_demo29_json_default);
+  assets_manager_add(am, data_file_info_txt_default);
+  assets_manager_add(am, data_gpinyin_dat_default);
+  assets_manager_add(am, data_suggest_words_zh_cn_dat_default);
+  assets_manager_add(am, data_test_dat_default);
+  assets_manager_add(am, data_test_json_default);
+#ifndef AWTK_WEB
+#ifdef WITH_TRUETYPE_FONT
+#else /*WITH_TRUETYPE_FONT*/
+#endif /*WITH_TRUETYPE_FONT*/
+#endif /*AWTK_WEB*/
+#ifdef WITH_VGCANVAS
+  assets_manager_add(am, image_ball_default);
+  assets_manager_add(am, image_china_default);
+  assets_manager_add(am, image_girl_default);
+  assets_manager_add(am, image_pointer_default);
+  assets_manager_add(am, image_pointer_1_default);
+  assets_manager_add(am, image_pointer_4_default);
+#endif /*WITH_VGCANVAS*/
+#endif /*defined(WITH_FS_RES) && !defined(AWTK_WEB)*/
+
+  tk_init_assets();
+  return RET_OK;
+}

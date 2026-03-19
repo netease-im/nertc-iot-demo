@@ -1,0 +1,94 @@
+# Prerequisites
+*.d
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Linker output
+*.ilk
+*.exp
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+*.swp
+# Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
+doc/datasheet/AC790N规格书
+wl80/
+*.used
+app.bin
+app.lz4
+db_update_files_data.bin
+download.bat
+isd_config.ini
+jl_isd.bin
+jl_isd.fw
+jl_isd.ufw
+jl_isd_expend.bin
+symbol_tbl.txt
+update.ufw
+null
+db_update_data.bin
+jl_isd_extend.bin
+symbol_tbl.html
+cpu/wl82/sdk.ld
+cpu/wl82/tools/isd_config_loader.ini
+cpu/wl82/tools/sdk.elf.objs.txt
+cpu/wl82/tools/sdk.elf.resolution.txt
+apps/common/movable/section.txt
+apps/wifi_tuya_iot/readme.txt
+apps/wifi_tuya_iot/tuya/.vscode/settings.json
+apps/wifi_tuya_iot/tuya/sdk/include/lwip/apps/FILES
+apps/demo/                                                                                                                                                   
+apps/scan_box/                                                                                                                                               
+apps/wifi_camera/                                                                                                                                            
+apps/wifi_ipc/     
+include_lib/
+cpu/
+ui_project/   
+sdk_tools/  
+include_lib/
+tools/
+doc/
+lib/
+
+# SDK build intermediate files
+cpu/wl82/tools/sdk.elf.*.bc
+cpu/wl82/tools/sdk.map
+cpu/wl82/tools/cfg_tool_bck.bin
+
+# IDE workspace
+default.workspace
