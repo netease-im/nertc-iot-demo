@@ -144,12 +144,8 @@ NeRtcProtocol::NeRtcProtocol() {
     nertc_sdk_config.optional_config.enable_ptt_mode = false;
 #endif
 
-    if (Board::GetInstance().GetBoardType() == "ml307") { //4G模组，需要外部网络IO
-        NeRtcExternalNetwork* ext_net = NeRtcExternalNetwork::GetInstance();
-        nertc_sdk_config.optional_config.ext_net_handle = ext_net->GetHandle();
-    } else {
-        nertc_sdk_config.optional_config.ext_net_handle = nullptr;
-    }
+    NeRtcExternalNetwork* ext_net = NeRtcExternalNetwork::GetInstance();
+    nertc_sdk_config.optional_config.ext_net_handle = ext_net->GetHandle();
 
     nertc_sdk_config.optional_config.custom_config = custom_config_string.c_str();
     nertc_sdk_config.log_cfg.log_level = NERTC_SDK_LOG_INFO;
@@ -239,12 +235,8 @@ NeRtcProtocol::NeRtcProtocol() {
     // 用户数据
     engine_config.user_data = this;
     // 外部网络接口
-    if (Board::GetInstance().GetBoardType() == "ml307") { //4G模组，需要外部网络IO
-        NeRtcExternalNetwork* ext_net = NeRtcExternalNetwork::GetInstance();
-        engine_config.ext_net_handle = ext_net->GetHandle();
-    } else {
-        engine_config.ext_net_handle = nullptr;
-    }
+    NeRtcExternalNetwork* ext_net = NeRtcExternalNetwork::GetInstance();
+    engine_config.ext_net_handle = ext_net->GetHandle();
 
 #if NERTC_ENABLE_CONFIG_FILE
     cJSON_Delete(config_json);
