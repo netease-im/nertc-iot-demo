@@ -12,8 +12,6 @@
 #include "freertos/task.h"
 #include "wifi_manager.h"
 
-#define BLUFI_DEVICE_NAME "Xiaozhi-Blufi"
-
 #ifdef CONFIG_BT_BLUEDROID_ENABLED
 #include "esp_bt_device.h"
 #include "esp_bt_main.h"
@@ -99,6 +97,13 @@ Blufi::Blufi()
 Blufi::~Blufi() {
     if (m_sec) {
         _security_deinit();
+    }
+}
+
+void Blufi::set_device_name(const std::string &name) {
+    if (!name.empty()) {
+        device_name_ = name;
+        ESP_LOGI(BLUFI_TAG, "BLE device name set to: %s", device_name_.c_str());
     }
 }
 
@@ -649,8 +654,8 @@ void Blufi::_wifi_scan_event_handler(void* arg, esp_event_base_t event_base, int
 void Blufi::_handle_event(esp_blufi_cb_event_t event, esp_blufi_cb_param_t* param) {
     switch (event) {
         case ESP_BLUFI_EVENT_INIT_FINISH:
-            ESP_LOGI(BLUFI_TAG, "BLUFI init finish");
-            esp_ble_gap_set_device_name(BLUFI_DEVICE_NAME);
+            ESP_LOGI(BLUFI_TAG, "BLUFI init finish, device name: %s", device_name_.c_str());
+            esp_ble_gap_set_device_name(device_name_.c_str());
             esp_blufi_adv_start();
             break;
         case ESP_BLUFI_EVENT_DEINIT_FINISH:

@@ -89,6 +89,10 @@ void Application::Initialize() {
     auto& board = Board::GetInstance();
     SetDeviceState(kDeviceStateStarting);
 
+#if CONFIG_CONNECTION_TYPE_NERTC
+    ReadNertcConfig();
+#endif
+
     // Setup the display
     auto display = board.GetDisplay();
     display->SetupUI();
@@ -358,10 +362,6 @@ void Application::HandleActivationDoneEvent() {
 void Application::ActivationTask() {
     // Create OTA object for activation process
     ota_ = std::make_unique<Ota>();
-
-#if CONFIG_CONNECTION_TYPE_NERTC
-    ReadNertcConfig();
-#endif
 
 #if CONFIG_CONNECTION_TYPE_NERTC
     if (Board::GetInstance().GetBoardType() == "ml307") {

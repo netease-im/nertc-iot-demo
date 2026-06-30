@@ -12,6 +12,6 @@
 	"ext_net_handle": false,
 	"ext_osal_handle": true,
 	"lite_mode": true,
-	"appkey":"xxxxxxxx",
+	"appkey":"fb19d9c282f568d143ad222925f47171",
 	"blufi_wifi" : true
 }

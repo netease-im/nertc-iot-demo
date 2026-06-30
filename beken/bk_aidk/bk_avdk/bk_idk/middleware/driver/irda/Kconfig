@@ -1,5 +1,0 @@
-menu "IRDA"
-	config IRDA
-		bool "Enable IRDA"
-		default n
-endmenu

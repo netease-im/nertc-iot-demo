@@ -1,6 +1,0 @@
-menu "Https"
-	config HTTPS
-		depends on LWIP
-		bool "Enable HTTPS"
-		default n
-endmenu

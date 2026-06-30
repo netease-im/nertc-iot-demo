@@ -1,8 +1,0 @@
-menu "Audio Play"
-
-	config AUDIO_PLAY
-		depends on AUDIO_DAC
-		bool "Enable Audio Play"
-		default n
-
-endmenu

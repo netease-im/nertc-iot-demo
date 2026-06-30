@@ -1,9 +1,4 @@
 dependencies:
-  78/xiaozhi-fonts: ~1.5.3
-  lvgl/lvgl: ~9.4.0
-  esp_lvgl_port: ~2.6.3
-  espressif/button: ~4.1.3
-
   # ESP-Hosted for P4 WiFi support (P4 uses external C6 as WiFi module)
   espressif/esp_hosted:
     version: 2.0.17

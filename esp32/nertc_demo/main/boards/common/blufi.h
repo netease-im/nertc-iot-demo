@@ -3,6 +3,7 @@
 #include <aes/esp_aes.h>
 #include <cassert>
 #include <cstring>
+#include <string>
 #include <vector>
 #include "esp_blufi_api.h"
 #include "esp_err.h"
@@ -41,6 +42,13 @@ public:
      */
     esp_err_t deinit();
 
+    /**
+     * @brief 设置 BLE 广播设备名
+     * 默认为 "Xiaozhi-Blufi"，可通过此方法自定义前缀。
+     * 必须在 init() 之前调用。
+     */
+    void set_device_name(const std::string &name);
+
     // Delete copy constructor and assignment operator for singleton
     Blufi(const Blufi &) = delete;
 
@@ -48,6 +56,7 @@ public:
 
 private:
     bool inited_ = false;
+    std::string device_name_ = "YunXin-Blufi";
 
     Blufi();
 

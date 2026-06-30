@@ -192,25 +192,20 @@ void Board::StartBlufiMode(bool blufi) {
 
     auto& application = Application::GetInstance();
     application.PlaySound(Lang::Sounds::OGG_BLUFI);
-    bool test_mode = false;
-#if CONFIG_CONNECTION_TYPE_NERTC
-    test_mode = application.GetNertcTestMode();
-#endif
     
     {
-        auto app_desc = esp_app_get_description();
         Settings settings("board", true);
         settings.SetString("id",        SystemInfo::GetMacAddress());
         settings.SetString("type",      std::string("yunxin"));
         settings.SetString("version",   esp_app_get_description()->version);
         settings.SetInt("blufi",        blufi ? 1 : 0);
-        settings.SetInt("test",         test_mode ? 1 : 0);
-        
+        settings.SetString("appkey",    application.GetAppkey());
+
         std::string app = "app";
         settings.EraseKey(app.c_str());
         settings.SetInt(app.c_str(), 1); //blufi 1, ota 2
-        ESP_LOGI(TAG, "StartBlufiMode name:%s id:%s type:%s version:%s set blufi nvs app to 1", 
-            GetBoardName().c_str(), SystemInfo::GetMacAddress().c_str(), std::string(app_desc->project_name).c_str(),
+        ESP_LOGI(TAG, "StartBlufiMode name:%s id:%s version:%s set blufi nvs app to 1",
+            GetBoardName().c_str(), SystemInfo::GetMacAddress().c_str(),
             esp_app_get_description()->version);
     }
 

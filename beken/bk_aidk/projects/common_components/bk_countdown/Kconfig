@@ -1,5 +1,0 @@
-menu "countdown"
-	  config COUNTDOWN
-        bool "Enable COUNTDOWN"
-        default n
-endmenu

@@ -1,0 +1,4 @@
+[submodule "beken/bk_aidk"]
+	path = beken/bk_aidk
+	url = https://github.com/bekencorp/bk_aidk.git
+	branch = ai_release/v2.0.1

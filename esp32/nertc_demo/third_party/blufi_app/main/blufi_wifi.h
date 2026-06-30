@@ -1,6 +1,8 @@
 #ifndef _BLUFI_WIFI_H_
 #define _BLUFI_WIFI_H_
 
+#include <stddef.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif

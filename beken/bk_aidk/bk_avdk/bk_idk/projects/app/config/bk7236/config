@@ -1,5 +1,0 @@
-# Overwrite ARMINO Configuration here
-#@ Enable Override Flash Partition
-CONFIG_OVERRIDE_FLASH_PARTITION=y
-#@ Enable OTP Test
-CONFIG_OTP_TEST=y

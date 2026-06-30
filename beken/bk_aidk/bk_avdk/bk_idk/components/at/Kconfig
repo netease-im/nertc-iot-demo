@@ -1,7 +1,0 @@
-menu "At"
-
-	config AT_CMD
-		bool "Enable At Cmd"
-		default n
-
-endmenu

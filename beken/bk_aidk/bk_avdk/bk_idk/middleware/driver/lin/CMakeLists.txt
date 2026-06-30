@@ -1,6 +1,0 @@
-if (CONFIG_LIN)
-	list(APPEND incs lin)
-	list(APPEND srcs lin/lin_driver.c lin/lin_statis.c)
-	set(incs ${incs} PARENT_SCOPE)
-	set(srcs ${srcs} PARENT_SCOPE)
-endif()

@@ -1,6 +1,0 @@
-menu "app_event"
-	  config APP_EVT
-        bool "Enable APP_EVT"
-        default y
-
-endmenu

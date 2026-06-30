@@ -1,4 +1,0 @@
-[submodule "bk_idk"]
-	path = bk_idk
-	url = ../bk_idk_ai.git
-	branch = ai_release/v2.0.1

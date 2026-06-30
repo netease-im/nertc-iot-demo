@@ -1,6 +1,0 @@
-menu "Httpc"
-	config HTTPC
-		bool "Enable HTTPC"
-		default n
-
-endmenu
