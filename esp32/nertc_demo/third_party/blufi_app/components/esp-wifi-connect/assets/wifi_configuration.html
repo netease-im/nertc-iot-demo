@@ -6,102 +6,213 @@
     <meta http-equiv="Content-Security-Policy" content="referrer no-referrer">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <style type="text/css">
+        /* ========== Base Styles ========== */
+        * {
+            box-sizing: border-box;
+        }
         body {
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
+            background: linear-gradient(160deg, #eef2f7 0%, #e2e8f0 100%);
+            min-height: 100vh;
+            color: #1a202c;
         }
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        input {
-            width: 100%;
-            padding: 5px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-        }
-        input[type="submit"] {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 3px;
-            padding: 10px;
-            cursor: pointer;
-        }
-        input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-        input[type="submit"]:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
+        .app {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 24px 16px 48px;
         }
 
-        #ap_list {
-            margin-top: 20px;
-            border-top: 1px solid #ccc;
-            padding-top: 10px;
+        /* ========== Header ========== */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
         }
-        #ap_list a {
-            display: block;
-            margin-top: 5px;
-            color: #007bff;
-            text-decoration: none;
+        .header .title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a202c;
         }
-        #ap_list a:hover {
-            text-decoration: underline;
+        .header .title .logo {
+            font-size: 22px;
         }
 
-        .language-switch {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-        }
+        /* ========== Language Switcher ========== */
         .language-switch select {
-            padding: 5px;
-            border-radius: 3px;
-            border: 1px solid #ccc;
+            padding: 8px 10px;
+            border-radius: 8px;
+            border: 1px solid #cbd5e0;
+            background: #fff;
+            font-size: 14px;
+            cursor: pointer;
+            outline: none;
         }
 
-        /* 标签页样式 */
+        /* ========== Card ========== */
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        /* ========== Tab Styles ========== */
         .tabs {
             display: flex;
-            margin-top: 20px;
-            margin-bottom: 0;
-            padding-left: 20px;
-            border-bottom: 1px solid #ccc;
+            margin: 0;
+            padding: 0 8px;
+            border-bottom: 1px solid #e2e8f0;
         }
         .tab {
-            padding: 10px 20px;
+            flex: 1;
+            text-align: center;
+            padding: 14px 8px;
             cursor: pointer;
-            border: 1px solid #ccc;
-            border-bottom: none;
-            border-radius: 5px 5px 0 0;
-            margin-right: 5px;
-            background-color: #f0f0f0;
-            position: relative;
-            top: 1px;
+            color: #718096;
+            font-weight: 600;
+            font-size: 15px;
+            border-bottom: 2px solid transparent;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .tab:hover {
+            color: #4a5568;
         }
         .tab.active {
-            background-color: #fff;
+            color: #007bff;
+            border-bottom-color: #007bff;
         }
         .tab-content {
             display: none;
-            border-top: none;
-            padding: 20px;
-            background-color: #fff;
+            padding: 24px;
         }
         .tab-content.active {
             display: block;
         }
 
+        /* ========== Form Elements ========== */
+        form p {
+            margin: 0 0 18px;
+        }
+        form p:last-child {
+            margin-bottom: 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+        input[type="text"], input[type="password"], select {
+            width: 100%;
+            padding: 11px 12px;
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+            font-size: 15px;
+            background: #fff;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        input[type="text"]:focus, input[type="password"]:focus, select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+        }
+        /* 自定义下拉箭头 */
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23718096' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 36px;
+            cursor: pointer;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 13px;
+            background: linear-gradient(135deg, #007bff, #0062db);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.1s, box-shadow 0.2s, background 0.2s;
+            box-shadow: 0 3px 10px rgba(0, 123, 255, 0.3);
+        }
+        input[type="submit"]:hover {
+            background: linear-gradient(135deg, #006ff5, #0056b3);
+        }
+        input[type="submit"]:active {
+            transform: translateY(1px);
+        }
+        input[type="submit"]:disabled {
+            background: #cbd5e0;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
         #remember_bssid, #sleep_mode {
             width: auto;
+            margin: 0;
         }
 
-        /* 提示框样式 */
+        /* ========== Misc UI ========== */
+        h3 {
+            margin: 0 0 14px;
+            font-size: 17px;
+            font-weight: 700;
+            color: #1a202c;
+        }
+        .error {
+            color: #e53e3e;
+            text-align: center;
+            font-size: 14px;
+            min-height: 18px;
+            margin: 0 0 14px;
+        }
+        #saved_list_container {
+            margin-bottom: 20px;
+        }
+        #saved_list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        #saved_list li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            background: #f7fafc;
+            font-size: 14px;
+        }
+        #saved_list button {
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 2px 4px;
+        }
+        .icon-btn {
+            padding: 8px 12px;
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+            background: #f7fafc;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* ========== Toast Message Styles ========== */
         .toast {
             position: fixed;
             top: 50%;
@@ -109,8 +220,8 @@
             transform: translate(-50%, -50%);
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
-            padding: 15px 30px;
-            border-radius: 8px;
+            padding: 14px 28px;
+            border-radius: 10px;
             z-index: 1000;
             opacity: 0;
             transition: opacity 0.3s ease-in-out;
@@ -120,105 +231,125 @@
         .toast.show {
             opacity: 1;
         }
+
+        /* ========== Responsive ========== */
+        @media (max-width: 520px) {
+            .app {
+                padding: 16px 12px 32px;
+            }
+            .tab-content {
+                padding: 18px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="toast" id="toast"></div>
-    <div class="language-switch">
-        <select id="language" onchange="changeLanguage()">
-            <option value="en-US">English</option>
-            <option value="zh-CN">简体中文</option>
-            <option value="zh-TW">繁體中文</option>
-            <option value="ja-JP">日本語</option>
-        </select>
-    </div>
-    
-    <div class="tabs">
-        <div class="tab active" onclick="switchTab('wifi')" data-lang="wifi_tab">WiFi 配置</div>
-        <div class="tab" onclick="switchTab('advanced')" data-lang="advanced_tab">高级选项</div>
-    </div>
-
-    <div id="wifi-tab" class="tab-content active">
-        <form action="/submit" method="post" onsubmit="submitForm(event)">
-            <div id="saved_list_container" style="display: none;">
-                <h3 data-lang="saved_wifi">已保存的 WiFi</h3>
-                <ul id="saved_list">
-                    <li>
-                        <span>SSID</span>
-                    </li>
-                </ul>
+    <div class="app">
+        <!-- Header -->
+        <div class="header">
+            <div class="title">
+                <span class="logo">🌐</span>
+                <span data-lang="title">网络配置</span>
             </div>
-            <div>
-                <h3 data-lang="new_wifi">新的 WiFi</h3>
-                <p class="error" style="color: red; text-align: center;" id="error">
-                </p>
-                <p>
-                    <label for="ssid">SSID:</label>
-                    <input type="text" id="ssid" name="ssid" required>
-                </p>
-                <p>
-                    <label for="password" data-lang="password">密码:</label>
-                    <input type="password" id="password" name="password">
-                </p>
-                <p style="text-align: center;">
-                    <input type="submit" value="连接" id="button" data-lang-value="connect">
-                </p>
-                <p id="ap_list">
-                </p>
+            <div class="language-switch">
+                <select id="language" onchange="changeLanguage()">
+                    <option value="en-US">English</option>
+                    <option value="zh-CN">简体中文</option>
+                    <option value="zh-TW">繁體中文</option>
+                    <option value="ja-JP">日本語</option>
+                </select>
             </div>
-        </form>
-    </div>
+        </div>
 
-    <div id="advanced-tab" class="tab-content">
-        <form action="/advanced/submit" method="post" onsubmit="submitAdvancedForm(event)">
-            <div>
-                <h3 data-lang="advanced_tab">高级选项</h3>
-                <p class="error" style="color: red; text-align: center;" id="advanced_error"></p>
-                
-                <p>
-                    <label for="ota_url" data-lang="ota_url">OTA服务器地址:</label>
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <input type="text" id="ota_url" name="ota_url" style="flex: 1;">
-                        <button type="button" onclick="clearOtaUrl()" style="padding: 5px 10px; border: 1px solid #ccc; border-radius: 3px; background-color: #f0f0f0; cursor: pointer;">❌</button>
+        <div class="card">
+            <div class="tabs">
+                <div class="tab active" onclick="switchTab('wifi')" data-lang="wifi_tab">WiFi 配置</div>
+                <div class="tab" onclick="switchTab('advanced')" data-lang="advanced_tab">高级选项</div>
+            </div>
+
+            <div id="wifi-tab" class="tab-content active">
+                <form action="/submit" method="post" onsubmit="submitForm(event)">
+                    <div id="saved_list_container" style="display: none;">
+                        <h3 data-lang="saved_wifi">已保存的 WiFi</h3>
+                        <ul id="saved_list">
+                            <li>
+                                <span>SSID</span>
+                            </li>
+                        </ul>
                     </div>
-                </p>
-
-                <p style="display: flex; align-items: center; gap: 10px;">
-                    <label for="max_tx_power" data-lang="max_tx_power" style="white-space: nowrap;">Wi-Fi发射功率:</label>
-                    <select id="max_tx_power" name="max_tx_power">
-                        <option value="8">2 dBm</option>
-                        <option value="20">5 dBm</option>
-                        <option value="28">7 dBm</option>
-                        <option value="34">8 dBm</option>
-                        <option value="44">11 dBm</option>
-                        <option value="52">13 dBm</option>
-                        <option value="56">14 dBm</option>
-                        <option value="60">15 dBm</option>
-                        <option value="66">16 dBm</option>
-                        <option value="72">18 dBm</option>
-                        <option value="80">20 dBm</option>
-                    </select>
-                </p>
-
-                <p style="display: flex; align-items: center; gap: 10px;">
-                    <label for="remember_bssid" style="margin: 0;">
-                        <span data-lang="remember_bssid">连接 Wi-Fi 时记住 BSSID</span>
-                    </label>
-                    <input type="checkbox" id="remember_bssid" name="remember_bssid">
-                </p>
-
-                <p style="display: flex; align-items: center; gap: 10px;">
-                    <label for="sleep_mode" style="margin: 0;">
-                        <span data-lang="sleep_mode">启用睡眠模式</span>
-                    </label>
-                    <input type="checkbox" id="sleep_mode" name="sleep_mode">
-                </p>
-
-                <p style="text-align: center;">
-                    <input type="submit" value="保存" id="advanced_button" data-lang-value="save">
-                </p>
+                    <div>
+                        <h3 data-lang="new_wifi">新的 WiFi</h3>
+                        <p class="error" id="error"></p>
+                        <p>
+                            <label for="ssid">SSID:</label>
+                            <select id="ssid" name="ssid" required>
+                                <option value="" disabled selected id="ssid_placeholder">请选择 2.4G Wi-Fi</option>
+                            </select>
+                        </p>
+                        <p>
+                            <label for="password" data-lang="password">密码:</label>
+                            <input type="password" id="password" name="password">
+                        </p>
+                        <p>
+                            <input type="submit" value="连接" id="button" data-lang-value="connect">
+                        </p>
+                    </div>
+                </form>
             </div>
-        </form>
+
+            <div id="advanced-tab" class="tab-content">
+                <form action="/advanced/submit" method="post" onsubmit="submitAdvancedForm(event)">
+                    <div>
+                        <h3 data-lang="advanced_tab">高级选项</h3>
+                        <p class="error" id="advanced_error"></p>
+
+                        <p>
+                            <label for="ota_url" data-lang="ota_url">OTA服务器地址:</label>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <input type="text" id="ota_url" name="ota_url" style="flex: 1;">
+                                <button type="button" class="icon-btn" onclick="clearOtaUrl()">❌</button>
+                            </div>
+                        </p>
+
+                        <p style="display: flex; align-items: center; gap: 10px;">
+                            <label for="max_tx_power" data-lang="max_tx_power" style="white-space: nowrap;">Wi-Fi发射功率:</label>
+                            <select id="max_tx_power" name="max_tx_power">
+                                <option value="8">2 dBm</option>
+                                <option value="20">5 dBm</option>
+                                <option value="28">7 dBm</option>
+                                <option value="34">8 dBm</option>
+                                <option value="44">11 dBm</option>
+                                <option value="52">13 dBm</option>
+                                <option value="56">14 dBm</option>
+                                <option value="60">15 dBm</option>
+                                <option value="66">16 dBm</option>
+                                <option value="72">18 dBm</option>
+                                <option value="80">20 dBm</option>
+                            </select>
+                        </p>
+
+                        <p style="display: flex; align-items: center; gap: 10px;">
+                            <label for="remember_bssid" style="margin: 0;">
+                                <span data-lang="remember_bssid">连接 Wi-Fi 时记住 BSSID</span>
+                            </label>
+                            <input type="checkbox" id="remember_bssid" name="remember_bssid">
+                        </p>
+
+                        <p style="display: flex; align-items: center; gap: 10px;">
+                            <label for="sleep_mode" style="margin: 0;">
+                                <span data-lang="sleep_mode">启用睡眠模式</span>
+                            </label>
+                            <input type="checkbox" id="sleep_mode" name="sleep_mode">
+                        </p>
+
+                        <p>
+                            <input type="submit" value="保存" id="advanced_button" data-lang-value="save">
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
     <script type="text/javascript">
@@ -234,7 +365,7 @@
                 new_wifi: '新的 Wi-Fi',
                 password: '密码:',
                 connect: '连接',
-                select_wifi: '从下面列表选择 2.4G Wi-Fi:',
+                select_wifi: '请选择 2.4G Wi-Fi',
                 wifi_tab: 'Wi-Fi 配置',
                 advanced_tab: '高级选项',
                 ota_url: '自定义 OTA 地址:',
@@ -249,7 +380,7 @@
                 new_wifi: '新的 Wi-Fi',
                 password: '密碼:',
                 connect: '連接',
-                select_wifi: '從下方列表選擇 2.4G Wi-Fi:',
+                select_wifi: '請選擇 2.4G Wi-Fi',
                 wifi_tab: 'Wi-Fi 設定',
                 advanced_tab: '進階選項',
                 ota_url: '自定義 OTA 位址:',
@@ -264,7 +395,7 @@
                 new_wifi: 'New Wi-Fi',
                 password: 'Password:',
                 connect: 'Connect',
-                select_wifi: 'Select an 2.4G Wi-Fi from the list below:',
+                select_wifi: 'Select 2.4G Wi-Fi',
                 wifi_tab: 'Wi-Fi Config',
                 advanced_tab: 'Advanced',
                 ota_url: 'Custom OTA URL:',
@@ -279,10 +410,10 @@
                 new_wifi: '新しいWi-Fi',
                 password: 'パスワード:',
                 connect: '接続',
-                select_wifi: '以下のリストから2.4G Wi-Fiを選択してください:',
+                select_wifi: '2.4G Wi-Fiを選択',
                 wifi_tab: 'Wi-Fi設定',
                 advanced_tab: '詳細設定',
-                ota_url: '自定義 OTA 位址:',
+                ota_url: 'カスタムOTAアドレス:',
                 max_tx_power: 'Wi-Fi最大送信電力:',
                 remember_bssid: 'Wi-Fi接続時にBSSIDを記憶する',
                 sleep_mode: 'スリープモードを有効にする',
@@ -308,11 +439,8 @@
                 const key = element.getAttribute('data-lang-value');
                 element.value = translations[lang][key];
             });
-            // Update AP list text
-            const apList = document.getElementById('ap_list');
-            if (apList.firstChild) {
-                apList.firstChild.textContent = translations[lang].select_wifi;
-            }
+            // 更新 SSID 下拉框占位文案
+            updateSsidPlaceholder();
             // Save language preference
             localStorage.setItem('preferred_language', lang);
         }
@@ -373,33 +501,55 @@
                 });
         }
 
-        // Load AP list from /scan
+        // 获取当前语言下“选择 Wi-Fi”的占位文案
+        function getSelectWifiText() {
+            const lang = document.getElementById('language').value;
+            return translations[lang].select_wifi;
+        }
+
+        // 更新 SSID 下拉框占位 option 文案
+        function updateSsidPlaceholder() {
+            const ph = document.getElementById('ssid_placeholder');
+            if (ph) {
+                ph.textContent = getSelectWifiText();
+            }
+        }
+
+        // 加载可用 Wi-Fi 网络，填充进 SSID 下拉框
         function loadAPList() {
             if (button.disabled) {
                 return;
             }
+            // 记录刷新前选中的 SSID，刷新后尽量保持选中
+            const prevSelected = ssid.value;
 
             fetch('/scan')
                 .then(response => response.json())
                 .then(data => {
-                    const lang = document.getElementById('language').value;
-                    const apList = document.getElementById('ap_list');
-                    apList.innerHTML = '<p>' + translations[lang].select_wifi + '</p>';
-                    data.forEach(ap => {
-                        // Create a link for each AP
-                        const link = document.createElement('a');
-                        link.href = '#';
-                        link.textContent = ap.ssid + ' (' + ap.rssi + ' dBm)';
-                        if (ap.authmode === 0) {
-                            link.textContent += ' 🌐';
-                        } else {
-                            link.textContent += ' 🔒';
-                        }
-                        link.addEventListener('click', () => {
-                            ssid.value = ap.ssid;
-                        });
-                        apList.appendChild(link);
+                    // 兼容 /scan 返回数组或 {aps:[...]} 两种结构
+                    const aps = data.aps || data || [];
+                    // 重建下拉 options
+                    ssid.innerHTML = '';
+                    const ph = document.createElement('option');
+                    ph.value = '';
+                    ph.disabled = true;
+                    ph.id = 'ssid_placeholder';
+                    ph.textContent = getSelectWifiText();
+                    ssid.appendChild(ph);
+
+                    aps.forEach(ap => {
+                        const opt = document.createElement('option');
+                        opt.value = ap.ssid;
+                        opt.textContent = ap.ssid + ' · ' + ap.rssi + ' dBm · ' + (ap.authmode === 0 ? '🌐' : '🔒');
+                        ssid.appendChild(opt);
                     });
+
+                    // 刷新后若原选中的 SSID 仍在列表则保持选中，否则回到占位
+                    if (prevSelected && aps.some(a => a.ssid === prevSelected)) {
+                        ssid.value = prevSelected;
+                    } else {
+                        ssid.value = '';
+                    }
                     setTimeout(loadAPList, 5000);
                 })
                 .catch(error => {
@@ -412,10 +562,10 @@
             // 从 URL 参数中获取语言设置
             const urlParams = new URLSearchParams(window.location.search);
             const langParam = urlParams.get('lang');
-            
+
             // 获取浏览器语言
             const browserLang = navigator.language || navigator.userLanguage;
-            
+
             // 语言映射表，将浏览器语言代码映射到支持的语言代码
             const languageMap = {
                 'zh': 'zh-CN',    // 简体中文
@@ -430,7 +580,7 @@
                 'en-CA': 'en-US', // 英语（加拿大）
                 'en-AU': 'en-US'  // 英语（澳大利亚）
             };
-            
+
             // 获取支持的语言代码
             const getSupportedLanguage = (lang) => {
                 // 首先尝试完全匹配
@@ -445,12 +595,12 @@
                 // 如果都不匹配，返回英语
                 return 'en-US';
             };
-            
+
             // 优先使用 URL 参数的语言设置，其次是本地存储的设置，最后是浏览器语言设置
-            const savedLang = langParam || 
-                             localStorage.getItem('preferred_language') || 
+            const savedLang = langParam ||
+                             localStorage.getItem('preferred_language') ||
                              getSupportedLanguage(browserLang);
-            
+
             document.getElementById('language').value = savedLang;
             changeLanguage();
             loadSavedList();
@@ -514,7 +664,7 @@
             });
             // 显示选中的标签页内容
             document.getElementById(tabName + '-tab').classList.add('active');
-            // 激活选中的标签
+            // 激活选中的标签页
             document.querySelector(`.tab[onclick="switchTab('${tabName}')"]`).classList.add('active');
         }
 
@@ -569,7 +719,7 @@
             try {
                 const response = await fetch('/advanced/config');
                 const data = await response.json();
-                
+
                 if (data.ota_url) {
                     document.getElementById('ota_url').value = data.ota_url;
                 }
