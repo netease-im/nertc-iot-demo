@@ -296,9 +296,9 @@ bool NeRtcProtocol::OpenAudioChannel() {
         return false;
     }
 
-    xEventGroupClearBits(event_group_, START_AI_EVENT);
-
     if (!rtc_mode_) {
+        xEventGroupClearBits(event_group_, START_AI_EVENT);
+        
         auto ret = nertc_start_ai(engine_);
         if (ret != 0) {
             ESP_LOGE(TAG, "Start AI failed, error: %d", ret);
@@ -312,15 +312,16 @@ bool NeRtcProtocol::OpenAudioChannel() {
                 return false;
             }
         }
+
+        // 等待服务器响应
+        EventBits_t bits = xEventGroupWaitBits(event_group_, START_AI_EVENT, pdTRUE, pdFALSE, pdMS_TO_TICKS(10000));
+        if (!(bits & START_AI_EVENT)) {
+            ESP_LOGE(TAG, "start ai timeout");
+            return false;
+        }
+
     } else {
         ESP_LOGI(TAG, "NeRtcProtocol OpenAudioChannel rtc p2p");
-    }
-
-    // 等待服务器响应
-    EventBits_t bits = xEventGroupWaitBits(event_group_, START_AI_EVENT, pdTRUE, pdFALSE, pdMS_TO_TICKS(10000));
-    if (!(bits & START_AI_EVENT)) {
-        ESP_LOGE(TAG, "start ai timeout");
-        return false;
     }
 
     audio_channel_opened_.store(true);

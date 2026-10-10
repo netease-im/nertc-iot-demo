@@ -10,8 +10,8 @@
 		"server_aec": false
 	},
 	"ext_net_handle": false,
-	"ext_osal_handle": true,
+	"ext_osal_handle": false,
 	"lite_mode": true,
-	"appkey":"fb19d9c282f568d143ad222925f47171",
+	"appkey":"",
 	"blufi_wifi" : true
 }
