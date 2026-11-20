@@ -129,13 +129,19 @@ NeRtcProtocol::NeRtcProtocol() {
         mqtt_password = mqtt_settings.GetString("password");
         mqtt_publish_topic = mqtt_settings.GetString("publish_topic");
 
-        sdk_config.mqtt_config.endpoint = mqtt_endpoint.empty() ? nullptr : mqtt_endpoint.c_str();
-        sdk_config.mqtt_config.client_id = mqtt_client_id.empty() ? nullptr : mqtt_client_id.c_str();
-        sdk_config.mqtt_config.username = mqtt_username.empty() ? nullptr : mqtt_username.c_str();
-        sdk_config.mqtt_config.password = mqtt_password.empty() ? nullptr : mqtt_password.c_str();
-        sdk_config.mqtt_config.publish_topic = mqtt_publish_topic.empty() ? nullptr : mqtt_publish_topic.c_str();
-        ESP_LOGI(TAG, "lite mode config endpoint:%s client_id:%s publish_topic:%s",
-                 mqtt_endpoint.c_str(), mqtt_client_id.c_str(), mqtt_publish_topic.c_str());
+        if (mqtt_endpoint.empty() || mqtt_client_id.empty()) {
+            lite_mode_ = false;
+            ESP_LOGI(TAG, "mqtt config is empty, make it to normal mode. endpoint:%s client_id:%s publish_topic:%s",
+                    mqtt_endpoint.c_str(), mqtt_client_id.c_str(), mqtt_publish_topic.c_str());
+        } else {
+            sdk_config.mqtt_config.endpoint = mqtt_endpoint.empty() ? nullptr : mqtt_endpoint.c_str();
+            sdk_config.mqtt_config.client_id = mqtt_client_id.empty() ? nullptr : mqtt_client_id.c_str();
+            sdk_config.mqtt_config.username = mqtt_username.empty() ? nullptr : mqtt_username.c_str();
+            sdk_config.mqtt_config.password = mqtt_password.empty() ? nullptr : mqtt_password.c_str();
+            sdk_config.mqtt_config.publish_topic = mqtt_publish_topic.empty() ? nullptr : mqtt_publish_topic.c_str();
+            ESP_LOGI(TAG, "lite mode config endpoint:%s client_id:%s publish_topic:%s",
+                    mqtt_endpoint.c_str(), mqtt_client_id.c_str(), mqtt_publish_topic.c_str());
+        }
     }
 
     // 日志配置

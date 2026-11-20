@@ -9,6 +9,13 @@
 		},
 		"server_aec": false
 	},
+	"custom_config": {
+		"rtc_call": false,
+		"cname": "1234",
+		"qos_feature": {
+			"jitter_delay_ms": 200
+		}
+	},
 	"ext_net_handle": false,
 	"ext_osal_handle": false,
 	"lite_mode": true,
